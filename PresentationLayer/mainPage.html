@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SUD312 — To-Do Application</title>
+  <style>
+    /* Style global */
+    body {
+      background: linear-gradient(135deg, #a8edea, #fed6e3);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #222;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      animation: fadeIn 1.2s ease-in;
+    }
+
+    /* En-tête */
+    header {
+      background-color: #222;
+      color: white;
+      width: 100%;
+      text-align: center;
+      padding: 25px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      animation: slideDown 1s ease-out;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2em;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* Conteneur principal */
+    main {
+      text-align: center;
+      padding: 25px 30px;
+      margin-top: 30px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      animation: fadeUp 1.2s ease-in-out;
+      width: 85%;
+      max-width: 500px;
+    }
+
+    h2 {
+      color: #111;
+      font-size: 1.6em;
+      margin-bottom: 15px;
+    }
+
+    p {
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      font-weight: bold;
+      margin-top: 10px;
+      color: #333;
+    }
+
+    input[type="text"], select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input[type="text"]:focus, select:focus {
+      border-color: #00a76f;
+      box-shadow: 0 0 6px rgba(0, 167, 111, 0.4);
+      outline: none;
+    }
+
+    /* Boutons */
+    .button {
+      background: linear-gradient(90deg, #007b5e, #00a76f);
+      border: none;
+      color: white;
+      padding: 10px 28px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 15px;
+      margin: 12px 8px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      display: inline-block;
+      box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background: linear-gradient(90deg, #00a76f, #00c88a);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 16px rgba(0,0,0,0.3);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes fadeUp {
+      from {opacity: 0; transform: translateY(40px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes slideDown {
+      from {transform: translateY(-50px); opacity: 0;}
+      to {transform: translateY(0); opacity: 1;}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Atelier: Software Architectures & Middlewares in NodeJS</h1>
+  </header>
+
+  <main>
+    <h2>Welcome to your To-Do Application!</h2>
+    <p>
+      Manage your tasks easily — create, view, and stay organized.<br>
+      What would you like to do next?
+    </p>
+
+    <section>
+      <h2>Create a Task</h2>
+      <form method="post" action="/addTodo">
+        <label>Name:</label>
+        <input type="text" name="name" required>
+
+        <label>Description:</label>
+        <input type="text" name="description">
+
+        <label>Priority:</label>
+        <select name="priority">
+          <option>Low</option>
+          <option selected>Medium</option>
+          <option>High</option>
+        </select>
+
+        <div style="margin-top: 20px;">
+          <button class="button" type="submit" id="addTodo">Add new todo</button>
+          <button class="button" type="submit" formaction="/todoList" formnovalidate>Display todo list</button>
+          <button class="button" type="submit" formaction="/userLogout" formnovalidate>Logout</button>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
